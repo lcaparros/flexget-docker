@@ -1,9 +1,9 @@
 FROM python:3.6-alpine
 
-RUN apk add --update && \
-apk add --no-cache --virtual .build-deps gcc musl-dev && \
+RUN apk add --update tzdata && \
+apk add --update --no-cache --virtual .build-deps gcc musl-dev && \
 pip3 install -U pip && \
-pip3 install flexget && \
+pip3 install flexget transmissionrpc && \
 apk del .build-deps gcc musl-dev
 
 VOLUME /config /torrents
